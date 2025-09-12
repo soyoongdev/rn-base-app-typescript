@@ -1,7 +1,7 @@
 // src/api/services/posts.service.ts
-import { User } from '@/models/api/user.model'
+import { User } from '@/models/user.model'
 
-import { RequestDataType, ResponseDataType } from '../api.types'
+import { RequestDataType, ResponseDataType } from '../types'
 import apiClient from '../client'
 
 const NAMESPACE = '/users'

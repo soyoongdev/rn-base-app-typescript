@@ -1,7 +1,7 @@
-import { LoginInput, RegisterInput } from '@/models/api/auth.model'
-import { User } from '@/models/api/user.model'
+import { LoginInput, RegisterInput } from '@/models/auth.model'
+import { User } from '@/models/user.model'
 
-import { ResponseDataType } from '../api.types'
+import { ResponseDataType } from '../types'
 import apiClient from '../client'
 
 const NAMESPACE = '/auth'

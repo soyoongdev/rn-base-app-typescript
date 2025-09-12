@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { LoginInput, RegisterInput } from '@/models/api/auth.model'
+import { LoginInput, RegisterInput } from '@/models/auth.model'
 import { clearToken, setToken } from '@/storage/token'
 
 import { authService } from '../services'
