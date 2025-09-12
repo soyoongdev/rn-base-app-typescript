@@ -10,13 +10,13 @@ const storage = new MMKV()
 
 // Adapter để dùng với TanStack Query
 export const storageMMKV = {
-  getItem: (key: string): string | null => {
-    return storage.getString(key) ?? null
-  },
-  setItem: (key: string, value: string): void => {
-    storage.set(key, value)
+  getItem: (key: string): string | undefined => {
+    return storage.getString(key) ?? undefined
   },
   removeItem: (key: string): void => {
     storage.delete(key)
+  },
+  setItem: (key: string, value: string): void => {
+    storage.set(key, value)
   },
 }

@@ -1,50 +1,61 @@
 # 🚀 React Native App
 
-Ứng dụng mobile được xây dựng bằng **React Native (0.80.2)** + **React (19.1.0)** với kiến trúc hiện đại:  
-- Quản lý server state bằng **TanStack Query**  
-- Local storage hiệu năng cao với **MMKV**  
-- Validation bằng **Zod**  
-- Hỗ trợ đa ngôn ngữ với **i18next**  
-- Navigation bằng **React Navigation v7**  
-- Debug dễ dàng với **Reactotron**  
+Ứng dụng mobile được xây dựng bằng **React Native (0.80.2)** + **React (19.1.0)** với kiến trúc hiện đại:
+
+- Quản lý server state bằng **TanStack Query**(https://tanstack.com/query/latest)
+- Dùng Keychain (iOS) và Keystore (Android) để lưu token **Keychain Access for React Native**(https://github.com/oblador/react-native-keychain)
+- Local storage hiệu năng cao với **MMKV**(https://github.com/mrousavy/react-native-mmkv)
+- Validation bằng **Zod**(https://zod.dev/)
+- Hỗ trợ đa ngôn ngữ với **i18next**(https://www.i18next.com/)
+- Navigation bằng **React Navigation v7**(https://reactnavigation.org/)
+- Debug dễ dàng với **Reactotron**(https://docs.infinite.red/reactotron/quick-start/react-native/)
 
 ---
 
 ## 📦 Tech Stack
 
 ### ⚛️ Core
-- **react (19.1.0)** – Thư viện chính để xây dựng UI.  
-- **react-native (0.80.2)** – Framework cho ứng dụng mobile native.  
+
+- **react (19.1.0)** – Thư viện chính để xây dựng UI.
+- **react-native (0.80.2)** – Framework cho ứng dụng mobile native.
 
 ### 🧭 Navigation
-- **@react-navigation/native** + **@react-navigation/stack** – Điều hướng màn hình.  
-- **react-native-gesture-handler**, **react-native-screens**, **react-native-safe-area-context**, **masked-view** – Dependencies cần thiết cho navigation.  
 
-### 🔄 State & Data
-- **@tanstack/react-query** – Quản lý server state, caching, re-fetch.  
-- **react-native-mmkv** – Storage local key-value nhanh, thay thế AsyncStorage.  
-- **zod** – Validation schema (API response, form).  
+- **@react-navigation/native** + **@react-navigation/stack** – Điều hướng màn hình.
+- **react-native-gesture-handler**, **react-native-screens**, **react-native-safe-area-context**, **masked-view** – Dependencies cần thiết cho navigation.
+
+### 🔄 State, Data & Safe
+
+- **@tanstack/react-query** – Quản lý server state, caching, re-fetch.
+- **react-native-mmkv** – Storage local key-value nhanh, thay thế AsyncStorage.
+- **zod** – Validation schema (API response, form).
+- **react-native-keychain** - Quản lý và lưu trữ thông tin nhạy cảm như: Password
 
 ### 🌍 Internationalization
-- **i18next** + **react-i18next** – Quản lý đa ngôn ngữ.  
-- **intl-pluralrules** – Hỗ trợ pluralization.  
+
+- **i18next** + **react-i18next** – Quản lý đa ngôn ngữ.
+- **intl-pluralrules** – Hỗ trợ pluralization.
 
 ### 🎨 UI & Animation
-- **react-native-reanimated** – Animation hiệu năng cao.  
-- **react-native-svg** + **react-native-svg-transformer** – Render SVG assets.  
-- **react-native-worklets** – Viết logic animation bằng worklets (JSI).  
+
+- **react-native-reanimated** – Animation hiệu năng cao.
+- **react-native-svg** + **react-native-svg-transformer** – Render SVG assets.
+- **react-native-worklets** – Viết logic animation bằng worklets (JSI).
 
 ### 🛡️ Error Handling
-- **react-error-boundary** – Bọc UI, bắt runtime error.  
+
+- **react-error-boundary** – Bọc UI, bắt runtime error.
 
 ### 🐛 Debugging / Dev Tools
-- **reactotron-react-native** – Debug logs, state, network.  
-- **reactotron-react-native-mmkv** – Debug MMKV storage.  
-- **reactotron-react-query** – Debug React Query cache.  
+
+- **reactotron-react-native** – Debug logs, state, network.
+- **reactotron-react-native-mmkv** – Debug MMKV storage.
+- **reactotron-react-query** – Debug React Query cache.
 
 ### 🧪 Testing
-- **jest** + **@testing-library/react-native** – Unit & integration tests.  
-- **react-test-renderer** – Snapshot testing.  
+
+- **jest** + **@testing-library/react-native** – Unit & integration tests.
+- **react-test-renderer** – Snapshot testing.
 
 ---
 
@@ -60,9 +71,9 @@ src
 ├── assets/            # Hình ảnh, SVG, fonts
 │
 ├── components/        # Reusable UI components
-│   ├── atoms/         
-│   ├── molecules/     
-│   └── organisms/     
+│   ├── atoms/
+│   ├── molecules/
+│   └── organisms/
 │
 ├── features/          # Feature-based modules
 │   ├── auth/
@@ -87,3 +98,4 @@ src
 │
 ├── App.tsx            # Entry point
 └── index.js           # RN bootstrap
+```

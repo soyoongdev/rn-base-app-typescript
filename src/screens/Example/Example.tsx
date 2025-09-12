@@ -2,17 +2,18 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
-import { useI18n, useUser } from '@/hooks';
+import { useI18n } from '@/hooks';
 import { useTheme } from '@/theme';
 
 import { AssetByVariant, IconByVariant, Skeleton } from '@/components/atoms';
 import { SafeScreen } from '@/components/templates';
+import useUser from '@/api/hooks/useUser';
 
 const MAX_RANDOM_ID = 9;
 
 function Example() {
   const { t } = useTranslation();
-  const { useFetchOneQuery } = useUser();
+  const { getUserById } = useUser();
   const { toggleLanguage } = useI18n();
 
   const {
@@ -28,12 +29,12 @@ function Example() {
 
   const [currentId, setCurrentId] = useState(-1);
 
-  const fetchOneUserQuery = useFetchOneQuery(currentId);
+  const fetchOneUserQuery = getUserById(currentId);
 
   useEffect(() => {
     if (fetchOneUserQuery.isSuccess) {
       Alert.alert(
-        t('screen_example.hello_user', { name: fetchOneUserQuery.data.name }),
+        t('screen_example.hello_user', { name: fetchOneUserQuery.data.data?.username }),
       );
     }
   }, [fetchOneUserQuery.isSuccess, fetchOneUserQuery.data, t]);

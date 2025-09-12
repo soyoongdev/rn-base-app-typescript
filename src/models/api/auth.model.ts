@@ -1,23 +1,12 @@
-export type LoginSchema = {
-  username: string
-  password: string
-  cookie: string
-  token: string
-}
-
+// INPUT LOGIN TYPE
 export type LoginInput = {
-  username: string
   password: string
+  username: string
 }
 
-export type RegisterSchema = {
-  username: string
-  password: string
-  email: string
-}
-
+// INPUT REGISTER TYPE
 export type RegisterInput = {
-  username: string
-  password: string
   email: string
+  password: string
+  username: string
 }
