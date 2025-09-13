@@ -1,3 +1,5 @@
+import { User } from '@/models/user.model'
+
 export type ItemStatusType =
   | 'active'
   | 'archived'
@@ -45,4 +47,13 @@ export type RequestDataType = {
   paginator: PaginatorType
   search: SearchType
   sorting: SortingType
+}
+
+export type AuthResponseDataType = {
+  valid: boolean // Token hợp lệ hay không
+  user?: User // Thông tin user nếu token hợp lệ
+  message: string // Message from server
+  errorCode?: string // Error code if any (ex: "INVALID_TOKEN") ~ Mã nhận diện lỗi nếu có
+  token?: string // New access token if valid
+  expressIn?: number // Expire time in seconds
 }

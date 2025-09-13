@@ -1,19 +1,23 @@
 import { LoginInput, RegisterInput } from '@/models/auth.model'
-import { User } from '@/models/user.model'
 
-import { ResponseDataType } from '../types'
+import { tokenStorage } from '@/storage/tokenStorage'
 import apiClient from '../client'
+import { AuthResponseDataType, ResponseDataType } from '../types'
 
 const NAMESPACE = '/auth'
 
 // Create new user (POST)
 export const login = async (
   parameters: LoginInput,
-): Promise<ResponseDataType<User>> => {
+): Promise<ResponseDataType<AuthResponseDataType>> => {
   return await apiClient
-    .post<ResponseDataType<User>>(NAMESPACE, parameters)
-    .then((res) => {
-      return res.data
+    .post<ResponseDataType<AuthResponseDataType>>(NAMESPACE, parameters)
+    .then((response) => {
+      const data = response.data.data
+      // Sau khi login thành công
+      // Lưu token vào storage
+      if (data?.token) tokenStorage.setToken(data?.token)
+      return response.data
     })
     .catch((error) => {
       throw error
@@ -40,9 +44,31 @@ export const logout = async (): Promise<ResponseDataType<string>> => {
 
 export const register = async (
   parameters: RegisterInput,
-): Promise<ResponseDataType<User>> => {
+): Promise<ResponseDataType<AuthResponseDataType>> => {
   return await apiClient
-    .post<ResponseDataType<User>>(`${NAMESPACE}/register`, parameters)
+    .post<ResponseDataType<AuthResponseDataType>>(
+      `${NAMESPACE}/register`,
+      parameters,
+    )
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      throw error
+    })
+    .finally(() => {
+      // console.log('done')
+    })
+}
+
+export const verifyToken = async (
+  token: string,
+): Promise<ResponseDataType<AuthResponseDataType>> => {
+  return await apiClient
+    .post<ResponseDataType<AuthResponseDataType>>(
+      `${NAMESPACE}/verify-token`,
+      token,
+    )
     .then((res) => {
       return res.data
     })
