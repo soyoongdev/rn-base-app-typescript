@@ -4,9 +4,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { MMKV } from 'react-native-mmkv'
 
-import AppNavigator from '@/navigation/AppNavigator'
 import { ThemeProvider } from '@/theme'
 import '@/translations'
+
+
+import RootNavigator from './navigation/RootNavigator'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,7 +28,7 @@ function App() {
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider storage={storage}>
-          <AppNavigator />
+          <RootNavigator />
         </ThemeProvider>
       </QueryClientProvider>
     </GestureHandlerRootView>

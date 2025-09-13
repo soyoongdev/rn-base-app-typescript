@@ -1,8 +1,8 @@
 // src/api/services/posts.service.ts
 import { User } from '@/models/user.model'
 
-import { RequestDataType, ResponseDataType } from '../types'
 import apiClient from '../client'
+import { RequestDataType, ResponseDataType } from '../types'
 
 const NAMESPACE = '/users'
 
@@ -12,8 +12,8 @@ export const createUser = async (
 ): Promise<ResponseDataType<User>> => {
   return await apiClient
     .post<ResponseDataType<User>>(NAMESPACE, newItem)
-    .then((res) => {
-      return res.data
+    .then((response) => {
+      return response.data
     })
     .catch((error) => {
       throw error
@@ -29,7 +29,7 @@ export const getUserById = async (
 ): Promise<ResponseDataType<User>> => {
   return await apiClient
     .get<ResponseDataType<User>>(`${NAMESPACE}?id=${id}`)
-    .then((res) => res.data)
+    .then((response) => response.data)
     .catch((error) => {
       throw error
     })
@@ -44,7 +44,7 @@ export const getUserByCode = async (
 ): Promise<ResponseDataType<User>> => {
   return await apiClient
     .get<ResponseDataType<User>>(`${NAMESPACE}?code=${code}`)
-    .then((res) => res.data)
+    .then((response) => response.data)
     .catch((error) => {
       throw error
     })
@@ -59,7 +59,7 @@ export const getAllUsers = async (
 ): Promise<ResponseDataType<User[]>> => {
   return await apiClient
     .post<ResponseDataType<User[]>>(NAMESPACE, parameters)
-    .then((res) => res.data)
+    .then((response) => response.data)
     .catch((error) => {
       throw error
     })
@@ -75,7 +75,7 @@ export const partialUpdateUserById = async (
 ): Promise<ResponseDataType<User>> => {
   return await apiClient
     .patch<ResponseDataType<User>>(`${NAMESPACE}?id=${id}`, newItem)
-    .then((res) => res.data)
+    .then((response) => response.data)
     .catch((error) => {
       throw error
     })

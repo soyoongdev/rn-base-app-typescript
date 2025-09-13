@@ -7,6 +7,7 @@ import { useTheme } from '@/theme';
 
 import { AssetByVariant, IconByVariant, Skeleton } from '@/components/atoms';
 import { SafeScreen } from '@/components/templates';
+
 import useUser from '@/api/hooks/useUser';
 
 const MAX_RANDOM_ID = 9;

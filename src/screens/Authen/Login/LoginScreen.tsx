@@ -1,5 +1,9 @@
-import React from 'react'
-
-export default function LoginScreen() {
-  return <div>Login Screen</div>
+const LoginScreen = () => {
+  return (
+    <div>
+      LoginScreen
+    </div>
+  )
 }
+
+export default LoginScreen

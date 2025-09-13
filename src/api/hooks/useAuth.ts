@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import { LoginInput, RegisterInput } from '@/models/auth.model'
-
 import { tokenStorage } from '@/storage/tokenStorage'
 import { DEFAULT_QUERY_AUTH_KEY } from '@/utils/constants'
+
 import { authService } from '../services'
 import { DEFAULT_QUERY_USER_KEY } from './useUser'
 
@@ -12,7 +12,7 @@ export default function useAuth() {
 
   // Check if user is authenticated
   const { data: authenticated, refetch: checkAuth } = useQuery({
-    queryKey: [DEFAULT_QUERY_AUTH_KEY],
+    initialData: false, // Mặc định là chưa đăng nhập
     queryFn: async () => {
       const token = tokenStorage.getToken()
 
@@ -25,12 +25,12 @@ export default function useAuth() {
         // Gọi API để kiểm tra token có hợp lệ hay không
         const response = await authService.verifyToken(token)
         return response?.data?.valid || false // Trả về true nếu token hợp lệ
-      } catch (error) {
+      } catch {
         // Nếu API trả lỗi, coi như token không hợp lệ
         return false
       }
     },
-    initialData: false, // Mặc định là chưa đăng nhập
+    queryKey: [DEFAULT_QUERY_AUTH_KEY],
     staleTime: Infinity, // Dữ liệu không bao giờ bị lỗi thời
   })
 

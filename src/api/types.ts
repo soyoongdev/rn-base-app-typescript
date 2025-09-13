@@ -42,18 +42,18 @@ export type ResponseDataType<T> = {
 }
 
 // Base request body data type
+export type AuthResponseDataType = {
+  errorCode?: string // Error code if any (ex: "INVALID_TOKEN") ~ Mã nhận diện lỗi nếu có
+  expressIn?: number // Expire time in seconds
+  message: string // Message from server
+  token?: string // New access token if valid
+  user?: User // Thông tin user nếu token hợp lệ
+  valid: boolean // Token hợp lệ hay không
+}
+
 export type RequestDataType = {
   filter: FilterType
   paginator: PaginatorType
   search: SearchType
   sorting: SortingType
-}
-
-export type AuthResponseDataType = {
-  valid: boolean // Token hợp lệ hay không
-  user?: User // Thông tin user nếu token hợp lệ
-  message: string // Message from server
-  errorCode?: string // Error code if any (ex: "INVALID_TOKEN") ~ Mã nhận diện lỗi nếu có
-  token?: string // New access token if valid
-  expressIn?: number // Expire time in seconds
 }

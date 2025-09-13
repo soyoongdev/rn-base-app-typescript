@@ -7,13 +7,13 @@ const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000, // timeout 10s
+  timeout: 10_000, // timeout 10s
 })
 
 // 🛠️ Interceptors
 // Add token trước khi gửi request
 apiClient.interceptors.request.use(
-  async (config) => {
+  (config) => {
     // Ví dụ: lấy token từ MMKV (hoặc AsyncStorage)
     // const token = MMKV.getString('access_token');
     const token = undefined

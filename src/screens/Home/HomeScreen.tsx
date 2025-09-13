@@ -1,5 +1,5 @@
-import React from 'react'
-
-export default function HomeScreen() {
+function HomeScreen() {
   return <div>HomeScreen</div>
 }
+
+export default HomeScreen

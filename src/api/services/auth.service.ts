@@ -1,6 +1,6 @@
 import { LoginInput, RegisterInput } from '@/models/auth.model'
-
 import { tokenStorage } from '@/storage/tokenStorage'
+
 import apiClient from '../client'
 import { AuthResponseDataType, ResponseDataType } from '../types'
 
